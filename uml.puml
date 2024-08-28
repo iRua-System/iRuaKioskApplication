@@ -1,0 +1,1800 @@
+@startuml
+set namespaceSeparator ::
+
+class "kiosk::ui::booking::member::booked::getBookedNumber.dart::GetBookedNumberScreen" {
+  +Store store
+  +_GetBookedNumberScreen createState()
+}
+
+"kiosk::ui::booking::member::booked::getBookedNumber.dart::GetBookedNumberScreen" o-- "kiosk::models::store.dart::Store"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::booking::member::booked::getBookedNumber.dart::GetBookedNumberScreen"
+
+class "kiosk::ui::booking::member::booked::getBookedNumber.dart::_GetBookedNumberScreen" {
+  -GlobalKey<FormState> _formKey
+  +CheckBookedCustomerBloc bloc
+  +TextEditingController phoneController
+  +void initState()
+  +Widget build()
+  +void onSignInClicked()
+}
+
+"kiosk::ui::booking::member::booked::getBookedNumber.dart::_GetBookedNumberScreen" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"kiosk::ui::booking::member::booked::getBookedNumber.dart::_GetBookedNumberScreen" o-- "kiosk::bloc::checkBookedCustomer_bloc.dart::CheckBookedCustomerBloc"
+"kiosk::ui::booking::member::booked::getBookedNumber.dart::_GetBookedNumberScreen" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::booking::member::booked::getBookedNumber.dart::_GetBookedNumberScreen"
+
+class "kiosk::ui::booking::member::booked::getBookedInfo.dart::GetBookedInfo" {
+  +Transaction transaction
+  +_GetBookedInfo createState()
+}
+
+"kiosk::ui::booking::member::booked::getBookedInfo.dart::GetBookedInfo" o-- "kiosk::models::transaction.dart::Transaction"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::booking::member::booked::getBookedInfo.dart::GetBookedInfo"
+
+class "kiosk::ui::booking::member::booked::getBookedInfo.dart::_GetBookedInfo" {
+  +List<Service> listService
+  +String totalPrice
+  +String vehicleBrand
+  +String vehicleBrandId
+  +String emp
+  +bool selectEmp
+  +GetServicesOfVehicleTypeBloc getServicesBloc
+  +GetAttendanceBloc attendanceBloc
+  +CheckPlateOnlineBloc checkPlateBloc
+  +GetExtraFeeBloc extraBloc
+  +bool onSelect
+  +Service extra
+  +CheckInBookedMemberBloc checkinBloc
+  +TextEditingController reasonController
+  +List<Employee> empList
+  +TextEditingController phoneController
+  +TextEditingController nameController
+  +TextEditingController bookingDateController
+  +TextEditingController vehicleTypeController
+  +TextEditingController brandController
+  +TextEditingController plateController
+  +TextEditingController empController
+  +GetRandomEmpBloc randomBloc
+  +void initState()
+  +Widget build()
+  +dynamic buildEstimatedTime()
+  +GestureDetector finishButton()
+  +void onFinishClicked()
+  +void showDialogConfirmActive()
+  +void update()
+  +void updatePrice()
+  +Widget buildDice()
+}
+
+"kiosk::ui::booking::member::booked::getBookedInfo.dart::_GetBookedInfo" o-- "kiosk::bloc::getVehicleType_bloc.dart::GetServicesOfVehicleTypeBloc"
+"kiosk::ui::booking::member::booked::getBookedInfo.dart::_GetBookedInfo" o-- "kiosk::bloc::getAttendance_bloc.dart::GetAttendanceBloc"
+"kiosk::ui::booking::member::booked::getBookedInfo.dart::_GetBookedInfo" o-- "kiosk::bloc::checkPlateOnline_bloc.dart::CheckPlateOnlineBloc"
+"kiosk::ui::booking::member::booked::getBookedInfo.dart::_GetBookedInfo" o-- "kiosk::bloc::getExtraFeeByVehicleId_bloc.dart::GetExtraFeeBloc"
+"kiosk::ui::booking::member::booked::getBookedInfo.dart::_GetBookedInfo" o-- "kiosk::models::service.dart::Service"
+"kiosk::ui::booking::member::booked::getBookedInfo.dart::_GetBookedInfo" o-- "kiosk::bloc::checkInBookedMember_bloc.dart::CheckInBookedMemberBloc"
+"kiosk::ui::booking::member::booked::getBookedInfo.dart::_GetBookedInfo" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"kiosk::ui::booking::member::booked::getBookedInfo.dart::_GetBookedInfo" o-- "kiosk::bloc::getRandomEmp_bloc.dart::GetRandomEmpBloc"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::booking::member::booked::getBookedInfo.dart::_GetBookedInfo"
+
+class "kiosk::ui::booking::member::booked::getBookedInfo.dart::LeftWidget" {
+  +String transactionId
+  +String vehicleId
+  +double width
+  +double height
+  +List<Service> services
+  +String price
+  +void Function(List<Service>) update
+  +void Function(List<Service>) updatePrice
+  +_LeftWidgetState createState()
+}
+
+"kiosk::ui::booking::member::booked::getBookedInfo.dart::LeftWidget" o-- "flutter::src::foundation::basic_types.dart::void Function(List<Service>)"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::booking::member::booked::getBookedInfo.dart::LeftWidget"
+
+class "kiosk::ui::booking::member::booked::getBookedInfo.dart::_LeftWidgetState" {
+  +RemoveServicesBloc bloc
+  +void initState()
+  +Widget build()
+  +dynamic onRemoveClicked()
+}
+
+"kiosk::ui::booking::member::booked::getBookedInfo.dart::_LeftWidgetState" o-- "kiosk::bloc::removeServices_bloc.dart::RemoveServicesBloc"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::booking::member::booked::getBookedInfo.dart::_LeftWidgetState"
+
+class "kiosk::ui::booking::member::unbooked::getWalkinCheck.dart::GetWalkinCheck" {
+  +Customer cust
+  +List<Service> listService
+  +int totalPrice
+  +Service extra
+  +_GetWalkinCheck createState()
+}
+
+"kiosk::ui::booking::member::unbooked::getWalkinCheck.dart::GetWalkinCheck" o-- "kiosk::models::customer.dart::Customer"
+"kiosk::ui::booking::member::unbooked::getWalkinCheck.dart::GetWalkinCheck" o-- "kiosk::models::service.dart::Service"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::booking::member::unbooked::getWalkinCheck.dart::GetWalkinCheck"
+
+class "kiosk::ui::booking::member::unbooked::getWalkinCheck.dart::_GetWalkinCheck" {
+  +CheckInWalkinMemberBloc bloc
+  +TextEditingController empController
+  +GetAttendanceBloc attendanceBloc
+  +GetRandomEmpBloc randomBloc
+  +String emp
+  -GlobalKey<ScaffoldState> _scaffoldKey
+  +List<Employee> empList
+  +bool selectEmp
+  +bool edit
+  +int price
+  +bool onSelect
+  +void initState()
+  +Widget build()
+  +dynamic buildEstimatedTime()
+  +Widget buildDice()
+  +Container selectedService()
+  +void onSignInClicked()
+  +void showDialogConfirmActive()
+}
+
+"kiosk::ui::booking::member::unbooked::getWalkinCheck.dart::_GetWalkinCheck" o-- "kiosk::bloc::checkInWalkinMember_bloc.dart::CheckInWalkinMemberBloc"
+"kiosk::ui::booking::member::unbooked::getWalkinCheck.dart::_GetWalkinCheck" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"kiosk::ui::booking::member::unbooked::getWalkinCheck.dart::_GetWalkinCheck" o-- "kiosk::bloc::getAttendance_bloc.dart::GetAttendanceBloc"
+"kiosk::ui::booking::member::unbooked::getWalkinCheck.dart::_GetWalkinCheck" o-- "kiosk::bloc::getRandomEmp_bloc.dart::GetRandomEmpBloc"
+"kiosk::ui::booking::member::unbooked::getWalkinCheck.dart::_GetWalkinCheck" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::booking::member::unbooked::getWalkinCheck.dart::_GetWalkinCheck"
+
+class "kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::GetWalkinInfo" {
+  +String phoneNum
+  +Customer cust
+  +_GetWalkinInfo createState()
+}
+
+"kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::GetWalkinInfo" o-- "kiosk::models::customer.dart::Customer"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::GetWalkinInfo"
+
+class "kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::_GetWalkinInfo" {
+  +GetServicesOfVehicleTypeBloc getServicesBloc
+  -GlobalKey<ScaffoldState> _scaffoldKey
+  +CheckPlateBloc checkBloc
+  +String vehicleType
+  +String vehicleBrand
+  +List<Service> serviceList
+  -GlobalKey<FormState> _formKey
+  +TextEditingController vehicleTypeController
+  +TextEditingController phoneController
+  +TextEditingController nameController
+  +TextEditingController plateController
+  +TextEditingController vehicleBrandController
+  +void initState()
+  +Widget build()
+  +void onSignInClicked()
+}
+
+"kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::_GetWalkinInfo" o-- "kiosk::bloc::getVehicleType_bloc.dart::GetServicesOfVehicleTypeBloc"
+"kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::_GetWalkinInfo" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::_GetWalkinInfo" o-- "kiosk::bloc::checkPlate_bloc.dart::CheckPlateBloc"
+"kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::_GetWalkinInfo" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::_GetWalkinInfo" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::_GetWalkinInfo"
+
+class "kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::StepBox" {
+  +int number
+  +String title
+  +Color activeBox
+  +Color activeText
+  +TextStyle style
+  +Widget build()
+}
+
+"kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::StepBox" o-- "dart::ui::Color"
+"kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::StepBox" o-- "flutter::src::painting::text_style.dart::TextStyle"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::booking::member::unbooked::getWalkinInfo.dart::StepBox"
+
+class "kiosk::ui::booking::member::unbooked::getWalkinService.dart::GetWalkinService" {
+  +Customer cust
+  +String vehicleType
+  +List<Service> serviceList
+  +_GetWalkinService createState()
+}
+
+"kiosk::ui::booking::member::unbooked::getWalkinService.dart::GetWalkinService" o-- "kiosk::models::customer.dart::Customer"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::booking::member::unbooked::getWalkinService.dart::GetWalkinService"
+
+class "kiosk::ui::booking::member::unbooked::getWalkinService.dart::_GetWalkinService" {
+  +int i
+  +List<Service> serviceList
+  +Service extra
+  +String search
+  +TextEditingController searchController
+  +List<Service> filterService
+  +void initState()
+  +void update()
+  +Widget build()
+  +void onSignInClicked()
+}
+
+"kiosk::ui::booking::member::unbooked::getWalkinService.dart::_GetWalkinService" o-- "kiosk::models::service.dart::Service"
+"kiosk::ui::booking::member::unbooked::getWalkinService.dart::_GetWalkinService" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::booking::member::unbooked::getWalkinService.dart::_GetWalkinService"
+"flutter::src::widgets::ticker_provider.dart::TickerProviderStateMixin" <|-- "kiosk::ui::booking::member::unbooked::getWalkinService.dart::_GetWalkinService"
+
+class "kiosk::ui::booking::member::unbooked::getWalkinService.dart::SelectBox" {
+  +List<Service> services
+  +List<Service> allServices
+  +void Function(int) update
+  +_SelectBoxState createState()
+}
+
+"kiosk::ui::booking::member::unbooked::getWalkinService.dart::SelectBox" o-- "flutter::src::foundation::basic_types.dart::void Function(int)"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::booking::member::unbooked::getWalkinService.dart::SelectBox"
+
+class "kiosk::ui::booking::member::unbooked::getWalkinService.dart::_SelectBoxState" {
+  +int i
+  +bool wantKeepAlive
+  +void initState()
+  +Widget build()
+  +void updateMoney()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::booking::member::unbooked::getWalkinService.dart::_SelectBoxState"
+"flutter::src::widgets::automatic_keep_alive.dart::AutomaticKeepAliveClientMixin" <|-- "kiosk::ui::booking::member::unbooked::getWalkinService.dart::_SelectBoxState"
+
+class "kiosk::ui::admin::drawerScreen.dart::DrawerScreen" {
+  +_DrawerScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::drawerScreen.dart::DrawerScreen"
+
+class "kiosk::ui::admin::drawerScreen.dart::_DrawerScreenState" {
+  +List<Map<dynamic, dynamic>> drawerItems
+  +GetConfigureBloc bloc
+  +void initState()
+  +Widget build()
+}
+
+"kiosk::ui::admin::drawerScreen.dart::_DrawerScreenState" o-- "kiosk::bloc::getStoreConfigure_bloc.dart::GetConfigureBloc"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::drawerScreen.dart::_DrawerScreenState"
+
+class "kiosk::ui::admin::adminHome.dart::HomePage" {
+  +Widget screen
+  +_HomePageState createState()
+}
+
+"kiosk::ui::admin::adminHome.dart::HomePage" o-- "flutter::src::widgets::framework.dart::Widget"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::adminHome.dart::HomePage"
+
+class "kiosk::ui::admin::adminHome.dart::_HomePageState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::adminHome.dart::_HomePageState"
+
+class "kiosk::ui::admin::service_manage.dart::ServiceManage" {
+  +_ServiceManageState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::service_manage.dart::ServiceManage"
+
+class "kiosk::ui::admin::service_manage.dart::_ServiceManageState" {
+  +double xOffset
+  +double yOffset
+  +double scaleFactor
+  +bool isDrawerOpen
+  +GetAllServicesBloc getBloc
+  +String selectedStart
+  +TextEditingController searchController
+  +void initState()
+  +Widget build()
+  +dynamic buildListService()
+  +dynamic onDeleteSerivce()
+}
+
+"kiosk::ui::admin::service_manage.dart::_ServiceManageState" o-- "kiosk::bloc::getAllServices_bloc.dart::GetAllServicesBloc"
+"kiosk::ui::admin::service_manage.dart::_ServiceManageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::service_manage.dart::_ServiceManageState"
+
+class "kiosk::ui::admin::service_manage.dart::ServiceManageHeaderColumn" {
+  +String title
+  +String price
+  +double width
+  +String photo
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::admin::service_manage.dart::ServiceManageHeaderColumn"
+
+class "kiosk::ui::admin::onlineHour.dart::OnlineHour" {
+  +_OnlineHourState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::onlineHour.dart::OnlineHour"
+
+class "kiosk::ui::admin::onlineHour.dart::_OnlineHourState" {
+  +double xOffset
+  +double yOffset
+  +double scaleFactor
+  +bool isDrawerOpen
+  +String start
+  +String end
+  +bool edit
+  +GetDefaultOnlineHourBloc getBloc
+  +TextEditingController fromController
+  +TextEditingController startController
+  +TextEditingController endController
+  +TextEditingController slotController
+  +TimeOfDay startSelectedTime
+  +TimeOfDay endSelectedTime
+  +String startHour
+  +String startTime
+  +String startMinute
+  +String endHour
+  +String endTime
+  +String endMinute
+  +DateFormat f
+  +void initState()
+  +Widget build()
+  -dynamic _selectStartTime()
+  -dynamic _selectEndTime()
+  +dynamic buildButton()
+  +dynamic onSaveClick()
+}
+
+"kiosk::ui::admin::onlineHour.dart::_OnlineHourState" o-- "kiosk::bloc::getDefaultOnlineHour_bloc.dart::GetDefaultOnlineHourBloc"
+"kiosk::ui::admin::onlineHour.dart::_OnlineHourState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"kiosk::ui::admin::onlineHour.dart::_OnlineHourState" o-- "flutter::src::material::time.dart::TimeOfDay"
+"kiosk::ui::admin::onlineHour.dart::_OnlineHourState" o-- "intl::src::intl::date_format.dart::DateFormat"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::onlineHour.dart::_OnlineHourState"
+
+class "kiosk::ui::admin::transaction_manage.dart::TransactionManage" {
+  +_TransactionManageState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::transaction_manage.dart::TransactionManage"
+
+class "kiosk::ui::admin::transaction_manage.dart::_TransactionManageState" {
+  +double xOffset
+  +double yOffset
+  +double scaleFactor
+  +bool isDrawerOpen
+  +GetAllTransactionBloc getBloc
+  +GetConfigureBloc systemBloc
+  +GetAllEmployeeBloc empBloc
+  +List<String> listEmp
+  +String selectedEmp
+  +String startDate
+  +String endDate
+  +TextEditingController startController
+  +TextEditingController endController
+  +void initState()
+  +Widget build()
+  +dynamic startDatePicker()
+  +Container buildFilter()
+}
+
+"kiosk::ui::admin::transaction_manage.dart::_TransactionManageState" o-- "kiosk::bloc::getAllTransactions_bloc.dart::GetAllTransactionBloc"
+"kiosk::ui::admin::transaction_manage.dart::_TransactionManageState" o-- "kiosk::bloc::getStoreConfigure_bloc.dart::GetConfigureBloc"
+"kiosk::ui::admin::transaction_manage.dart::_TransactionManageState" o-- "kiosk::bloc::getAllEmployees_bloc.dart::GetAllEmployeeBloc"
+"kiosk::ui::admin::transaction_manage.dart::_TransactionManageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::transaction_manage.dart::_TransactionManageState"
+
+class "kiosk::ui::admin::editService.dart::EditService" {
+  +Service service
+  +_EditServiceState createState()
+}
+
+"kiosk::ui::admin::editService.dart::EditService" o-- "kiosk::models::service.dart::Service"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::editService.dart::EditService"
+
+class "kiosk::ui::admin::editService.dart::_EditServiceState" {
+  -GlobalKey<ScaffoldState> _scaffoldKey
+  +GetServicesOfVehicleTypeChipBloc getBloc
+  +TextEditingController nameController
+  +TextEditingController desController
+  +UpdateServiceBloc updateBloc
+  +bool editPrice
+  -GlobalKey<FormState> _formKey
+  +CreateServiceBloc bloc
+  +MyFile img
+  +List<VehicleType> temp
+  +void initState()
+  +Widget build()
+  +dynamic edit()
+  +dynamic serviceVehiclePrice()
+  +Widget chip()
+  +void onSignInClicked()
+  +void showDialogConfirmActive()
+}
+
+"kiosk::ui::admin::editService.dart::_EditServiceState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"kiosk::ui::admin::editService.dart::_EditServiceState" o-- "kiosk::bloc::getVehicleTypeChip_bloc.dart::GetServicesOfVehicleTypeChipBloc"
+"kiosk::ui::admin::editService.dart::_EditServiceState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"kiosk::ui::admin::editService.dart::_EditServiceState" o-- "kiosk::bloc::updateService_bloc.dart::UpdateServiceBloc"
+"kiosk::ui::admin::editService.dart::_EditServiceState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"kiosk::ui::admin::editService.dart::_EditServiceState" o-- "kiosk::bloc::createService_bloc.dart::CreateServiceBloc"
+"kiosk::ui::admin::editService.dart::_EditServiceState" o-- "kiosk::models::myfile.dart::MyFile"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::editService.dart::_EditServiceState"
+
+class "kiosk::ui::admin::feedbacks_manage.dart::FeedbackManage" {
+  +_FeedbackManageState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::feedbacks_manage.dart::FeedbackManage"
+
+class "kiosk::ui::admin::feedbacks_manage.dart::_FeedbackManageState" {
+  +double xOffset
+  +double yOffset
+  +double scaleFactor
+  +bool isDrawerOpen
+  +GetAllFeedbackBloc getBloc
+  +List<String> listStart
+  +String selectedStart
+  +TextEditingController searchController
+  +void initState()
+  +Widget build()
+}
+
+"kiosk::ui::admin::feedbacks_manage.dart::_FeedbackManageState" o-- "kiosk::bloc::getAllFeedback_bloc.dart::GetAllFeedbackBloc"
+"kiosk::ui::admin::feedbacks_manage.dart::_FeedbackManageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::feedbacks_manage.dart::_FeedbackManageState"
+
+class "kiosk::ui::admin::feedbacks_manage.dart::ServiceManageHeaderColumn" {
+  +String title
+  +String price
+  +double width
+  +String photo
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::admin::feedbacks_manage.dart::ServiceManageHeaderColumn"
+
+class "kiosk::ui::admin::transactionDetails.dart::TransactionDetailsScreen" {
+  +String transId
+  +String payment
+  +String finish
+  +String price
+  +_TransactionDetailsScreen createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::transactionDetails.dart::TransactionDetailsScreen"
+
+class "kiosk::ui::admin::transactionDetails.dart::_TransactionDetailsScreen" {
+  +TextEditingController codeController
+  +FindTransactionDetailBloc bloc
+  +TextEditingController phoneController
+  +TextEditingController nameController
+  +TextEditingController plateController
+  +TextEditingController vehicleBrandController
+  +TextEditingController vehicleTypeController
+  +TextEditingController finishController
+  +TextEditingController priceController
+  +TextEditingController paymentController
+  +void initState()
+  +Widget build()
+  +Column textField()
+  +Column phoneField()
+  +Padding fullnameWidget()
+}
+
+"kiosk::ui::admin::transactionDetails.dart::_TransactionDetailsScreen" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"kiosk::ui::admin::transactionDetails.dart::_TransactionDetailsScreen" o-- "kiosk::bloc::findTransactionDetail_bloc.dart::FindTransactionDetailBloc"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::transactionDetails.dart::_TransactionDetailsScreen"
+
+class "kiosk::ui::admin::transactionDetails.dart::LeftWidget" {
+  +double width
+  +double height
+  +String empname
+  +String price
+  +List<Service> services
+  +_LeftWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::transactionDetails.dart::LeftWidget"
+
+class "kiosk::ui::admin::transactionDetails.dart::_LeftWidgetState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::transactionDetails.dart::_LeftWidgetState"
+
+class "kiosk::ui::admin::createService.dart::CreateService" {
+  +_CreateService createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::createService.dart::CreateService"
+
+class "kiosk::ui::admin::createService.dart::_CreateService" {
+  -GlobalKey<ScaffoldState> _scaffoldKey
+  +GetServicesOfVehicleTypeChipBloc getBloc
+  -GlobalKey<FormState> _formKey
+  +TextEditingController nameController
+  +TextEditingController desController
+  +CreateServiceBloc bloc
+  +MyFile img
+  +List<VehicleType> temp
+  +void initState()
+  +Widget build()
+  +dynamic serviceVehiclePrice()
+  +Widget chip()
+  +void onSignInClicked()
+  +void showDialogConfirmActive()
+}
+
+"kiosk::ui::admin::createService.dart::_CreateService" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"kiosk::ui::admin::createService.dart::_CreateService" o-- "kiosk::bloc::getVehicleTypeChip_bloc.dart::GetServicesOfVehicleTypeChipBloc"
+"kiosk::ui::admin::createService.dart::_CreateService" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"kiosk::ui::admin::createService.dart::_CreateService" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"kiosk::ui::admin::createService.dart::_CreateService" o-- "kiosk::bloc::createService_bloc.dart::CreateServiceBloc"
+"kiosk::ui::admin::createService.dart::_CreateService" o-- "kiosk::models::myfile.dart::MyFile"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::createService.dart::_CreateService"
+
+class "kiosk::ui::admin::assignPrice.dart::AssignPrice" {
+  +List<Service> serviceList
+  +String vehicleType
+  +_AssignPriceState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::assignPrice.dart::AssignPrice"
+
+class "kiosk::ui::admin::assignPrice.dart::_AssignPriceState" {
+  +GetAllServicesBloc serviceBloc
+  +GetServicesOfVehicleTypeBloc getBloc
+  +TextEditingController priceController
+  +String selectService
+  -GlobalKey<FormState> _formKey
+  +List<String> temp
+  +List<Service> serviceList
+  +void initState()
+  +Widget build()
+  +bool onSignInClicked()
+  +void showDialogConfirmActive()
+}
+
+"kiosk::ui::admin::assignPrice.dart::_AssignPriceState" o-- "kiosk::bloc::getAllServices_bloc.dart::GetAllServicesBloc"
+"kiosk::ui::admin::assignPrice.dart::_AssignPriceState" o-- "kiosk::bloc::getVehicleType_bloc.dart::GetServicesOfVehicleTypeBloc"
+"kiosk::ui::admin::assignPrice.dart::_AssignPriceState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"kiosk::ui::admin::assignPrice.dart::_AssignPriceState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::assignPrice.dart::_AssignPriceState"
+
+class "kiosk::ui::admin::storeConfigure.dart::StoreConfigure" {
+  +_StoreConfigure createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::admin::storeConfigure.dart::StoreConfigure"
+
+class "kiosk::ui::admin::storeConfigure.dart::_StoreConfigure" {
+  +double xOffset
+  +double yOffset
+  +double scaleFactor
+  +bool isDrawerOpen
+  +GetConfigureBloc getBloc
+  +TextEditingController storeNameController
+  +TextEditingController addressController
+  +TextEditingController phoneController
+  +TextEditingController bikeController
+  +TextEditingController carController
+  +UpdateStoreConfigureBloc updateBloc
+  +TextEditingController ownerNameController
+  +TextEditingController openController
+  +TextEditingController closeController
+  +DateTime open
+  +DateTime close
+  -GlobalKey<FormState> _formKey
+  +bool newImage
+  +MyFile img
+  +void initState()
+  +Widget build()
+  +dynamic buildButton()
+  -dynamic _showOpenDatePicker()
+  -dynamic _showCloseDatePicker()
+  +void onUpdateClicked()
+}
+
+"kiosk::ui::admin::storeConfigure.dart::_StoreConfigure" o-- "kiosk::bloc::getStoreConfigure_bloc.dart::GetConfigureBloc"
+"kiosk::ui::admin::storeConfigure.dart::_StoreConfigure" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"kiosk::ui::admin::storeConfigure.dart::_StoreConfigure" o-- "kiosk::bloc::updateStoreConfigure_bloc.dart::UpdateStoreConfigureBloc"
+"kiosk::ui::admin::storeConfigure.dart::_StoreConfigure" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"kiosk::ui::admin::storeConfigure.dart::_StoreConfigure" o-- "kiosk::models::myfile.dart::MyFile"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::admin::storeConfigure.dart::_StoreConfigure"
+
+class "kiosk::ui::admin::storeConfigure.dart::PasswordDialog" {
+  {static} +void displayDialog()
+}
+
+class "kiosk::ui::waitingList.dart::WaitingListScreen" {
+  +_WaitingListScreen createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::waitingList.dart::WaitingListScreen"
+
+class "kiosk::ui::waitingList.dart::_WaitingListScreen" {
+  +GetWaitingListBloc bloc
+  +CancelTransactionBloc cancelBloc
+  +TextEditingController reasonController
+  +TextEditingController phoneController
+  +void initState()
+  +Widget build()
+}
+
+"kiosk::ui::waitingList.dart::_WaitingListScreen" o-- "kiosk::bloc::getWaitingList_bloc.dart::GetWaitingListBloc"
+"kiosk::ui::waitingList.dart::_WaitingListScreen" o-- "kiosk::bloc::cancelTransaction_bloc.dart::CancelTransactionBloc"
+"kiosk::ui::waitingList.dart::_WaitingListScreen" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::waitingList.dart::_WaitingListScreen"
+
+class "kiosk::ui::waitingList.dart::TransactionHeaderColumn" {
+  +String title
+  +String price
+  +double width
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::waitingList.dart::TransactionHeaderColumn"
+
+class "kiosk::ui::onlineSlot.dart::OnlineSlotPage" {
+  +_OnlineSlotState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::onlineSlot.dart::OnlineSlotPage"
+
+class "kiosk::ui::onlineSlot.dart::_OnlineSlotState" {
+  +GetOnlineSlotListBloc getBloc
+  +GetDefaultOnlineHourBloc slotBloc
+  +String limitedSlot
+  +void initState()
+  +Widget build()
+  +Widget buildHeader()
+  +Widget buildHour()
+  +Widget buildContent()
+  +Widget buildTable()
+  +TableRow buildTableContent()
+  +TableRow buildTableHeader()
+}
+
+"kiosk::ui::onlineSlot.dart::_OnlineSlotState" o-- "kiosk::bloc::getOnlineSlotList_bloc.dart::GetOnlineSlotListBloc"
+"kiosk::ui::onlineSlot.dart::_OnlineSlotState" o-- "kiosk::bloc::getDefaultOnlineHour_bloc.dart::GetDefaultOnlineHourBloc"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::onlineSlot.dart::_OnlineSlotState"
+
+class "kiosk::ui::ordermanage::manageTransactions.dart::ManageTransactions" {
+  +String phoneNum
+  +Transaction transaction
+  +_ManageTransactions createState()
+}
+
+"kiosk::ui::ordermanage::manageTransactions.dart::ManageTransactions" o-- "kiosk::models::transaction.dart::Transaction"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::ordermanage::manageTransactions.dart::ManageTransactions"
+
+class "kiosk::ui::ordermanage::manageTransactions.dart::_ManageTransactions" {
+  +List<Service> listService
+  +String totalPrice
+  +bool customerCanceled
+  +String payment
+  +String paymentId
+  +List<Payment> temp
+  +GetPaymentBloc payBloc
+  -GlobalKey<ScaffoldState> _scaffoldKey
+  +CancelTransactionBloc cancelBloc
+  +TextEditingController reasonController
+  +TextEditingController paymentController
+  +TextEditingController phoneController
+  +TextEditingController nameController
+  +TextEditingController plateController
+  +TextEditingController vehicleTypeController
+  +TextEditingController brandController
+  +void initState()
+  +Widget build()
+  +dynamic buildCancel()
+  +Widget buildPayment()
+  +dynamic selectPayment()
+  +GestureDetector finishButton()
+  +GestureDetector finishWithoutPaymentButton()
+  +void onFinishClicked()
+  +void onFinishWithoutPaymentClicked()
+  +void update()
+  +dynamic openRatingBox()
+  +void onCancelClicked()
+  +void showDialogConfirmActive()
+}
+
+"kiosk::ui::ordermanage::manageTransactions.dart::_ManageTransactions" o-- "kiosk::bloc::getPayment_bloc.dart::GetPaymentBloc"
+"kiosk::ui::ordermanage::manageTransactions.dart::_ManageTransactions" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+"kiosk::ui::ordermanage::manageTransactions.dart::_ManageTransactions" o-- "kiosk::bloc::cancelTransaction_bloc.dart::CancelTransactionBloc"
+"kiosk::ui::ordermanage::manageTransactions.dart::_ManageTransactions" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::ordermanage::manageTransactions.dart::_ManageTransactions"
+
+class "kiosk::ui::ordermanage::manageTransactions.dart::LeftWidget" {
+  +String transactionId
+  +String vehicleId
+  +double width
+  +double height
+  +List<Service> services
+  +String price
+  +void Function(List<Service>) update
+  +String status
+  +_LeftWidgetState createState()
+}
+
+"kiosk::ui::ordermanage::manageTransactions.dart::LeftWidget" o-- "flutter::src::foundation::basic_types.dart::void Function(List<Service>)"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::ordermanage::manageTransactions.dart::LeftWidget"
+
+class "kiosk::ui::ordermanage::manageTransactions.dart::_LeftWidgetState" {
+  +RemoveServicesBloc bloc
+  +int i
+  +int length
+  +void initState()
+  +Widget build()
+  +void showDialogConfirmActive()
+  +dynamic onRemoveClicked()
+}
+
+"kiosk::ui::ordermanage::manageTransactions.dart::_LeftWidgetState" o-- "kiosk::bloc::removeServices_bloc.dart::RemoveServicesBloc"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::ordermanage::manageTransactions.dart::_LeftWidgetState"
+
+class "kiosk::ui::ordermanage::manageTransactions.dart::PasswordDialog" {
+  {static} +void showDialogConfirmActive()
+  {static} +void displayDialog()
+}
+
+class "kiosk::ui::ordermanage::findTransaction.dart::FindTransactionScreen" {
+  +_FindTransactionScreen createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::ordermanage::findTransaction.dart::FindTransactionScreen"
+
+class "kiosk::ui::ordermanage::findTransaction.dart::_FindTransactionScreen" {
+  +FindTransactionBloc bloc
+  +TextEditingController phoneController
+  +void initState()
+  +Widget build()
+  +void onFindClicked()
+  +void showDialogConfirmActive()
+}
+
+"kiosk::ui::ordermanage::findTransaction.dart::_FindTransactionScreen" o-- "kiosk::bloc::findTransaction_bloc.dart::FindTransactionBloc"
+"kiosk::ui::ordermanage::findTransaction.dart::_FindTransactionScreen" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::ordermanage::findTransaction.dart::_FindTransactionScreen"
+
+class "kiosk::ui::ordermanage::findTransaction.dart::TransactionHeaderColumn" {
+  +String title
+  +String price
+  +String status
+  +double width
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::ordermanage::findTransaction.dart::TransactionHeaderColumn"
+
+class "kiosk::ui::ordermanage::addService.dart::AddService" {
+  +String transactionId
+  +String vehicleId
+  +List<Service> serviceList
+  +void Function(List<Service>) update
+  +void Function(dynamic)? updatePrice
+  +String? status
+  +_AddService createState()
+}
+
+"kiosk::ui::ordermanage::addService.dart::AddService" o-- "flutter::src::foundation::basic_types.dart::void Function(List<Service>)"
+"kiosk::ui::ordermanage::addService.dart::AddService" o-- "flutter::src::foundation::basic_types.dart::void Function(dynamic)"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::ordermanage::addService.dart::AddService"
+
+class "kiosk::ui::ordermanage::addService.dart::_AddService" {
+  +int i
+  +int length
+  +List<Service> services
+  +GetServicesBloc getBloc
+  +AddServicesBloc addBloc
+  +void initState()
+  +void update()
+  +Widget build()
+  +void onSignInClicked()
+}
+
+"kiosk::ui::ordermanage::addService.dart::_AddService" o-- "kiosk::bloc::getServices_bloc.dart::GetServicesBloc"
+"kiosk::ui::ordermanage::addService.dart::_AddService" o-- "kiosk::bloc::addServices_bloc.dart::AddServicesBloc"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::ordermanage::addService.dart::_AddService"
+"flutter::src::widgets::ticker_provider.dart::TickerProviderStateMixin" <|-- "kiosk::ui::ordermanage::addService.dart::_AddService"
+
+class "kiosk::ui::ordermanage::addService.dart::SelectBox" {
+  +int servicesLength
+  +List<Service> services
+  +void Function(int) update
+  +_SelectBoxState createState()
+}
+
+"kiosk::ui::ordermanage::addService.dart::SelectBox" o-- "flutter::src::foundation::basic_types.dart::void Function(int)"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::ui::ordermanage::addService.dart::SelectBox"
+
+class "kiosk::ui::ordermanage::addService.dart::_SelectBoxState" {
+  +int i
+  +int selectedService
+  +bool wantKeepAlive
+  +void initState()
+  +Widget build()
+  +void updateMoney()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::ui::ordermanage::addService.dart::_SelectBoxState"
+"flutter::src::widgets::automatic_keep_alive.dart::AutomaticKeepAliveClientMixin" <|-- "kiosk::ui::ordermanage::addService.dart::_SelectBoxState"
+
+class "kiosk::ui::widgets::closeStoreDialog.dart::CloseStoreDialog" {
+  {static} +void displayDialog()
+}
+
+class "kiosk::ui::widgets::helper.dart::MoneyFormat" {
+  {static} +String formatMoney()
+}
+
+class "kiosk::ui::widgets::historytransaction_column.dart::HistoryTransactionColumn" {
+  +Transaction transaction
+  +double? width
+  +Widget build()
+  +dynamic buildRatingStar()
+}
+
+"kiosk::ui::widgets::historytransaction_column.dart::HistoryTransactionColumn" o-- "kiosk::models::transaction.dart::Transaction"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::widgets::historytransaction_column.dart::HistoryTransactionColumn"
+
+class "kiosk::ui::widgets::textField.dart::MyTextField" {
+  +String label
+  +int maxLines
+  +int minLines
+  +Icon icon
+  +String hint
+  +TextInputType keyboard
+  +TextEditingController controller
+  +String? Function(String?)? validator
+  +String error
+  +Widget build()
+}
+
+"kiosk::ui::widgets::textField.dart::MyTextField" o-- "flutter::src::widgets::icon.dart::Icon"
+"kiosk::ui::widgets::textField.dart::MyTextField" o-- "flutter::src::services::text_input.dart::TextInputType"
+"kiosk::ui::widgets::textField.dart::MyTextField" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"kiosk::ui::widgets::textField.dart::MyTextField" o-- "null::String Function(String)"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::widgets::textField.dart::MyTextField"
+
+class "kiosk::ui::widgets::dialog.dart::OpenDialog" {
+  {static} +void displayDialog()
+}
+
+class "kiosk::ui::widgets::backButton.dart::MyBackButton" {
+  +Color color
+  +Widget build()
+}
+
+"kiosk::ui::widgets::backButton.dart::MyBackButton" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::widgets::backButton.dart::MyBackButton"
+
+class "kiosk::ui::widgets::approveDialog.dart::ApproveDialog" {
+  {static} +void displayDialog()
+}
+
+class "kiosk::ui::widgets::confirmDialogOnline.dart::ConfirmDialogOnline" {
+  {static} +void displayDialog()
+}
+
+class "kiosk::ui::widgets::service_column.dart::ServiceColumn" {
+  +String title
+  +dynamic Function()? onTap
+  +String price
+  +Icon? icon
+  +dynamic Function()? onPressedIcon
+  +String status
+  +bool? isNew
+  +Widget build()
+  +dynamic buildCancelService()
+}
+
+"kiosk::ui::widgets::service_column.dart::ServiceColumn" o-- "null::dynamic Function()"
+"kiosk::ui::widgets::service_column.dart::ServiceColumn" o-- "flutter::src::widgets::icon.dart::Icon"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::widgets::service_column.dart::ServiceColumn"
+
+class "kiosk::ui::widgets::waitingSlot_column.dart::WaitingSlotColumn" {
+  +String number
+  +String phonenum
+  +double width
+  +Icon icon
+  +Function onPressedIcon
+  +Widget build()
+}
+
+"kiosk::ui::widgets::waitingSlot_column.dart::WaitingSlotColumn" o-- "flutter::src::widgets::icon.dart::Icon"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::widgets::waitingSlot_column.dart::WaitingSlotColumn"
+
+class "kiosk::ui::widgets::stepBox.dart::StepBox" {
+  +int number
+  +String title
+  +Color activeBox
+  +Color activeText
+  +TextStyle style
+  +Widget build()
+}
+
+"kiosk::ui::widgets::stepBox.dart::StepBox" o-- "dart::ui::Color"
+"kiosk::ui::widgets::stepBox.dart::StepBox" o-- "flutter::src::painting::text_style.dart::TextStyle"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::widgets::stepBox.dart::StepBox"
+
+class "kiosk::ui::widgets::transaction_column.dart::TransactionColumn" {
+  +String title
+  +String? subtitle
+  +dynamic Function()? onTap
+  +String price
+  +String status
+  +double width
+  +Widget build()
+}
+
+"kiosk::ui::widgets::transaction_column.dart::TransactionColumn" o-- "null::dynamic Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::widgets::transaction_column.dart::TransactionColumn"
+
+class "kiosk::ui::widgets::exitDialog.dart::ExitDialog" {
+  {static} +void displayDialog()
+}
+
+class "kiosk::ui::widgets::feedback_column.dart::FeedbackColumn" {
+  +Transaction transaction
+  +double? width
+  +Widget build()
+  +dynamic buildRatingStar()
+}
+
+"kiosk::ui::widgets::feedback_column.dart::FeedbackColumn" o-- "kiosk::models::transaction.dart::Transaction"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::widgets::feedback_column.dart::FeedbackColumn"
+
+class "kiosk::ui::widgets::serviceManage_column.dart::ServiceManageColumn" {
+  +String title
+  +dynamic Function()? onTap
+  +String price
+  +double width
+  +String photo
+  +dynamic Function()? delete
+  +Widget build()
+}
+
+"kiosk::ui::widgets::serviceManage_column.dart::ServiceManageColumn" o-- "null::dynamic Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::ui::widgets::serviceManage_column.dart::ServiceManageColumn"
+
+class "kiosk::ui::widgets::dialogToHome.dart::ToHomeDialog" {
+  {static} +void displayDialog()
+}
+
+class "kiosk::ui::widgets::confirmDialog.dart::ConfirmDialog" {
+  {static} +void displayDialog()
+}
+
+class "kiosk::ui::widgets::dialogCount.dart::CountDialog" {
+  {static} +void displayDialog()
+}
+
+class "kiosk::constants::appColor.dart::AppColor" {
+  {static} +Color PRIMARY_BLUE
+  {static} +Color PRIMARY_TEXT_WHITE
+  {static} +Color TEXT_FIELD_BLUE
+  {static} +Color TEXT_PHONE_NUMBER
+  {static} +Color ERROR_TEXT
+}
+
+"kiosk::constants::appColor.dart::AppColor" o-- "dart::ui::Color"
+
+class "kiosk::constants::api.dart::ApiConstants" {
+  {static} +String HOST
+}
+
+class "kiosk::constants::api.dart::RegexConstants" {
+  {static} +String NZPHONEREGEX
+  {static} +String NZPLATEREGEX
+}
+
+class "kiosk::firebase_options.dart::DefaultFirebaseOptions" {
+  {static} +FirebaseOptions android
+  {static} +FirebaseOptions ios
+  {static} +FirebaseOptions currentPlatform
+}
+
+"kiosk::firebase_options.dart::DefaultFirebaseOptions" o-- "firebase_core_platform_interface::firebase_core_platform_interface.dart::FirebaseOptions"
+
+class "kiosk::models::feedback.dart::Feedback" {
+  +String? transId
+  +String? starPoint
+  +String? message
+}
+
+class "kiosk::models::onlineDate.dart::OnlineDate" {
+  +String? fromDate
+  +String? endDate
+  +String? startOnline
+  +String? endOnline
+  +String? limitedSlot
+}
+
+class "kiosk::models::customer.dart::Customer" {
+  +String? accId
+  +String? username
+  +String? role
+  +String? fullname
+  +String? phoneNum
+  +String? photo
+  +String? bookingDate
+  +String? cusId
+  +String? balance
+  +String? plate
+  +String? vehicleBrand
+  +String? deviceToken
+  +String? vehiclePlate
+}
+
+class "kiosk::models::servicePrice.dart::ServicePrice" {
+  +String serviceVehicleId
+  +String name
+  +String price
+  +bool? isActive
+  +String? estimatedTime
+  +Map<String, dynamic> toJson()
+}
+
+class "kiosk::models::payment.dart::Payment" {
+  +String? id
+  +String? paymentType
+}
+
+class "kiosk::models::onlineSlotPerHour.dart::OnlineSlotPerHour" {
+  +String? time
+  +List<OnlineSlot>? transList
+}
+
+class "kiosk::models::onlineSlot.dart::OnlineSlot" {
+  +String? phone
+  +String? vehicleName
+}
+
+class "kiosk::models::vehicleType.dart::VehicleType" {
+  +String? id
+  +String? name
+  +bool? check
+  +List<String>? brand
+  +TextEditingController? controller
+  +String? price
+  +String? time
+  +TextEditingController? timeController
+  +Map<String, dynamic> toJson()
+}
+
+"kiosk::models::vehicleType.dart::VehicleType" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "kiosk::models::service.dart::Service" {
+  +String? id
+  +String? name
+  +String? description
+  +String? price
+  +String? serviceVehicleId
+  +String vehicleName
+  +String? vehicleId
+  +bool? check
+  +String? photo
+  +MyFile? file
+  +bool? isNew
+  +List<ServicePrice> prices
+}
+
+"kiosk::models::service.dart::Service" o-- "kiosk::models::myfile.dart::MyFile"
+
+class "kiosk::models::waitingSlot.dart::WaitingSlot" {
+  +String? number
+  +String? phonenum
+  +String? transactionId
+  +String? time
+  +String? empInfo
+  +String? cusInfo
+}
+
+class "kiosk::models::transaction.dart::Transaction" {
+  +String? id
+  +String? bookingDate
+  +String? status
+  +String? price
+  +List<Service>? services
+  +String? vehiclePlate
+  +String? vehicleName
+  +String? vehicleId
+  +Customer? cust
+  +Employee? emp
+  +String? vehicleBrand
+  +Feedback? feedback
+  +String? finishedDate
+  +String? payment
+}
+
+"kiosk::models::transaction.dart::Transaction" o-- "kiosk::models::customer.dart::Customer"
+"kiosk::models::transaction.dart::Transaction" o-- "kiosk::models::employee.dart::Employee"
+"kiosk::models::transaction.dart::Transaction" o-- "kiosk::models::feedback.dart::Feedback"
+
+class "kiosk::models::employee.dart::Employee" {
+  +String empId
+  +String serialNumberNfc
+  +String fullname
+  +String? estimatedTime
+}
+
+class "kiosk::models::store.dart::Store" {
+  +String? storeName
+  +String? address
+  +String? phone
+  +int? numOfMotorbike
+  +int? numOfCar
+  +String? ownerName
+  +String? ownerImage
+  +String? limitedSlot
+  +String? openTime
+  +String? closeTime
+}
+
+class "kiosk::models::autoComplete.dart::AutoCompleteText" {
+  +List<String> texts
+  +List<String> getSuggestions()
+}
+
+class "kiosk::models::myfile.dart::MyFile" {
+  +String? fileName
+  +String? extension
+  +File? file
+  +String? url
+}
+
+"kiosk::models::myfile.dart::MyFile" o-- "dart::io::File"
+
+class "kiosk::dataprovider::checkPlate.dart::CheckPlateProvider" {
+  +dynamic checkPlate()
+}
+
+class "kiosk::dataprovider::createWalkinMember.dart::CreateWalkinMeberProvider" {
+  +dynamic createWalkinMember()
+}
+
+class "kiosk::dataprovider::checkInWalkinMember.dart::CheckInWalkinMeberProvider" {
+  +dynamic checkInWalkinMember()
+}
+
+class "kiosk::dataprovider::checkInWalkinMember.dart::ServiceTemp" {
+  +String id
+  +Map<String, dynamic> toJson()
+}
+
+class "kiosk::dataprovider::getSystemTime.dart::GetSystemTimeProvider" {
+  +dynamic getSystemTimeProvider()
+}
+
+class "kiosk::dataprovider::checkMember.dart::CheckMemberProvider" {
+  +dynamic checkMember()
+}
+
+class "kiosk::dataprovider::updateDefaultOnlineHour.dart::UpdateDefaultOnlineHourProvider" {
+  +dynamic updateDeafultOnlineHour()
+}
+
+class "kiosk::dataprovider::getAllEmployee.dart::GetAllEmployeeProvider" {
+  +dynamic getAllEmployee()
+}
+
+class "kiosk::dataprovider::addServices.dart::AddServiceProvider" {
+  +dynamic addService()
+}
+
+class "kiosk::dataprovider::addServices.dart::ServiceTemp" {
+  +String id
+  +String isNew
+  +Map<String, dynamic> toJson()
+}
+
+class "kiosk::dataprovider::getRandomEmp.dart::GetRandomEmpProvider" {
+  +dynamic getRandomEmprovider()
+}
+
+class "kiosk::dataprovider::finishTransaction.dart::FinishTransactionProvider" {
+  +dynamic finishTransaction()
+}
+
+class "kiosk::dataprovider::getAllServices.dart::GetAllServicesProvider" {
+  +dynamic getAllServices()
+}
+
+class "kiosk::dataprovider::updateStoreConfigure.dart::UpdateStoreProvider" {
+  +dynamic updateStoreProvider()
+}
+
+class "kiosk::dataprovider::removeServices.dart::RemoveServiceProvider" {
+  +dynamic removeService()
+}
+
+class "kiosk::dataprovider::removeServices.dart::ServiceTemp" {
+  +String id
+  +Map<String, dynamic> toJson()
+}
+
+class "kiosk::dataprovider::getAttendance.dart::GetAttendanceProvider" {
+  +dynamic getAttendance()
+}
+
+class "kiosk::dataprovider::getServices.dart::GetServicesProvider" {
+  +dynamic getServices()
+}
+
+class "kiosk::dataprovider::getStoreConfigure.dart::GetStoreConfigureProvider" {
+  +dynamic getStoreConfigure()
+}
+
+class "kiosk::dataprovider::getOnlineSlotList.dart::GetOnlineSlotListProvider" {
+  +dynamic getOnlineSlotList()
+}
+
+class "kiosk::dataprovider::updateServicePrice.dart::UpdateServicePriceProvider" {
+  +dynamic updateServicePriceProvider()
+}
+
+class "kiosk::dataprovider::getAllTransaction.dart::GetAllTransactionProvider" {
+  +dynamic getAllTransaction()
+  +String convert()
+}
+
+class "kiosk::dataprovider::checkInBookedMember.dart::CheckInBookedMeberProvider" {
+  +dynamic checkInBookedMember()
+}
+
+class "kiosk::dataprovider::checkInBookedMember.dart::ServiceTemp" {
+  +String id
+  +Map<String, dynamic> toJson()
+}
+
+class "kiosk::dataprovider::findTransaction.dart::FindTransactionProvider" {
+  +dynamic findTransaction()
+}
+
+class "kiosk::dataprovider::getWaitingList.dart::GetWaitingListProvider" {
+  +dynamic getWaitingList()
+}
+
+class "kiosk::dataprovider::findTransactionDetail.dart::FindTransactionDetailProvider" {
+  +dynamic findTransactionDetail()
+}
+
+class "kiosk::dataprovider::checkAdmin.dart::CheckAdminProvider" {
+  +dynamic checkAdmin()
+}
+
+class "kiosk::dataprovider::updateService.dart::UpdateServiceProvider" {
+  +dynamic updateServiceProvider()
+}
+
+class "kiosk::dataprovider::getDefaultOnlineHour.dart::GetDefaultOnlineHourProvider" {
+  +dynamic getDefaultOnlineHour()
+}
+
+class "kiosk::dataprovider::getExtraFeeByVehicleId.dart::GetExtraFeeByVehicleIdProvider" {
+  +dynamic getExtraFeeByVehicleProvider()
+}
+
+class "kiosk::dataprovider::getPayment.dart::GetPaymentProvider" {
+  +dynamic getPayment()
+}
+
+class "kiosk::dataprovider::getAllFeedback.dart::GetAllFeebackProvider" {
+  +dynamic getAllFeedbackTransaction()
+}
+
+class "kiosk::dataprovider::checkBookedCustomer.dart::CheckBookedCustomerProvider" {
+  +dynamic checkBookedCustomer()
+}
+
+class "kiosk::dataprovider::cancelTransaction.dart::CancelTransactionProvider" {
+  +dynamic cancelTransaction()
+}
+
+class "kiosk::dataprovider::getServicesOfVehicle.dart::GetServicesOfVehicleProvider" {
+  +dynamic getServicesOfVehicle()
+  +dynamic getVehicleBrand()
+}
+
+class "kiosk::dataprovider::createService.dart::CreateServiceProvider" {
+  +dynamic createServiceMember()
+}
+
+class "kiosk::dataprovider::getGenCode.dart::GetGenCodeProvider" {
+  +dynamic getGenCodeProvider()
+}
+
+class "kiosk::dataprovider::assignPrice.dart::AssignPriceProvider" {
+  +dynamic assignPrice()
+}
+
+class "kiosk::dataprovider::changeSafeKey.dart::ChangeSafeKeyProvider" {
+  +dynamic changeSafeKeyProvider()
+}
+
+class "kiosk::main.dart::MyHttpOverrides" {
+  +HttpClient createHttpClient()
+}
+
+"dart::_http::HttpOverrides" <|-- "kiosk::main.dart::MyHttpOverrides"
+
+class "kiosk::main.dart::MyApp" {
+  +GlobalKey<NavigatorState> navigatorKey
+  +Widget build()
+}
+
+"kiosk::main.dart::MyApp" o-- "flutter::src::widgets::framework.dart::GlobalKey<NavigatorState>"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::main.dart::MyApp"
+
+class "kiosk::main.dart::MyCheckInPage" {
+  +GlobalKey<NavigatorState> navigatorKey
+  +_MyCheckInPageState createState()
+}
+
+"kiosk::main.dart::MyCheckInPage" o-- "flutter::src::widgets::framework.dart::GlobalKey<NavigatorState>"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "kiosk::main.dart::MyCheckInPage"
+
+class "kiosk::main.dart::_MyCheckInPageState" {
+  +GetGenCodeBloc bloc
+  +DateTime now
+  +PushNoti noti
+  +void initState()
+  +Widget build()
+  +dynamic checkInButton()
+  +void showDialogConfirmActive()
+}
+
+"kiosk::main.dart::_MyCheckInPageState" o-- "kiosk::bloc::getGenCode_bloc.dart::GetGenCodeBloc"
+"kiosk::main.dart::_MyCheckInPageState" o-- "kiosk::noti::noti.dart::PushNoti"
+"flutter::src::widgets::framework.dart::State" <|-- "kiosk::main.dart::_MyCheckInPageState"
+
+class "kiosk::main.dart::Counter" {
+  +String? number
+  +Color? color
+  +String? image
+  +double? width
+  +double? height
+  +Widget build()
+}
+
+"kiosk::main.dart::Counter" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "kiosk::main.dart::Counter"
+
+class "kiosk::main.dart::PasswordDialog" {
+  {static} +void displayDialog()
+}
+
+class "kiosk::noti::noti.dart::PushNoti" {
+  -DatabaseReference _notiRequest
+  -DatabaseReference _approveRequest
+  +StreamSubscription<dynamic> approveStreamSubscription
+  -DatabaseReference _connectRequest
+  +StreamSubscription<dynamic> connectStreamSubscription
+  +void updateNoti()
+  +void updateApprove()
+  +void connected()
+  +dynamic sendNotiToUser()
+}
+
+"kiosk::noti::noti.dart::PushNoti" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"kiosk::noti::noti.dart::PushNoti" o-- "dart::async::StreamSubscription<dynamic>"
+
+class "kiosk::bloc::getExtraFeeByVehicleId_bloc.dart::GetExtraFeeBloc" {
+  +StreamController<dynamic> getExtraFeeStream
+  +Stream<dynamic> getExtraFee
+  +dynamic getExtraFeeBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::getExtraFeeByVehicleId_bloc.dart::GetExtraFeeBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getExtraFeeByVehicleId_bloc.dart::GetExtraFeeBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::checkInBookedMember_bloc.dart::CheckInBookedMemberBloc" {
+  +StreamController<dynamic> checkInBookedMember
+  +StreamController<dynamic> isChecking
+  +Stream<dynamic> checkInBookedMemberStream
+  +Stream<dynamic> isCheckingStream
+  +dynamic checkInBookedMemberBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::checkInBookedMember_bloc.dart::CheckInBookedMemberBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::checkInBookedMember_bloc.dart::CheckInBookedMemberBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getAllFeedback_bloc.dart::GetAllFeedbackBloc" {
+  +StreamController<dynamic> getFeedbackStream
+  +List<Transaction> transaction
+  +Stream<dynamic> getFeedback
+  +dynamic getAllFeedbackBloc()
+  +void dispose()
+  +void searchByName()
+}
+
+"kiosk::bloc::getAllFeedback_bloc.dart::GetAllFeedbackBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getAllFeedback_bloc.dart::GetAllFeedbackBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getPayment_bloc.dart::GetPaymentBloc" {
+  +StreamController<dynamic> getPaymentStream
+  +Stream<dynamic> getPayment
+  +dynamic getPaymentBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::getPayment_bloc.dart::GetPaymentBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getPayment_bloc.dart::GetPaymentBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getAllEmployees_bloc.dart::GetAllEmployeeBloc" {
+  +StreamController<dynamic> getEmployeeStream
+  +Stream<dynamic> getEmployee
+  +dynamic getAllEmployeeBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::getAllEmployees_bloc.dart::GetAllEmployeeBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getAllEmployees_bloc.dart::GetAllEmployeeBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::checkPlateOnline_bloc.dart::CheckPlateOnlineBloc" {
+  +StreamController<dynamic> checkPlateOnlineStream
+  +CheckInBookedMemberBloc bloc
+  +Stream<dynamic> checkPlateOnline
+  +dynamic checkPlateOnlineBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::checkPlateOnline_bloc.dart::CheckPlateOnlineBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::checkPlateOnline_bloc.dart::CheckPlateOnlineBloc" o-- "kiosk::bloc::checkInBookedMember_bloc.dart::CheckInBookedMemberBloc"
+"kiosk::bloc::checkPlateOnline_bloc.dart::CheckPlateOnlineBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::changeSafeKey_bloc.dart::ChangeSafeKeyBloc" {
+  +StreamController<dynamic> changeSafeKeyStream
+  +Stream<dynamic> changeSafeKey
+  +dynamic changeSafeKeyBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::changeSafeKey_bloc.dart::ChangeSafeKeyBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::changeSafeKey_bloc.dart::ChangeSafeKeyBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getStoreConfigure_bloc.dart::GetConfigureBloc" {
+  +StreamController<dynamic> getConfigureStream
+  +StreamController<dynamic> systemStream
+  +Stream<dynamic> getConfigure
+  +Stream<dynamic> system
+  +dynamic getConfigureBloc()
+  +void dispose()
+  +dynamic getSystemBloc()
+}
+
+"kiosk::bloc::getStoreConfigure_bloc.dart::GetConfigureBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getStoreConfigure_bloc.dart::GetConfigureBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getServices_bloc.dart::GetServicesBloc" {
+  +StreamController<dynamic> getServicesStream
+  +Stream<dynamic> getServices
+  +dynamic getServicesBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::getServices_bloc.dart::GetServicesBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getServices_bloc.dart::GetServicesBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::createService_bloc.dart::CreateServiceBloc" {
+  +StreamController<dynamic> createServiceStream
+  +StreamController<dynamic> isCheckingStream
+  +FirebaseStorage storage
+  +Reference storageReference
+  +UploadTask uploadTask
+  +Stream<dynamic> createService
+  +Stream<dynamic> isChecking
+  +dynamic createServiceBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::createService_bloc.dart::CreateServiceBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::createService_bloc.dart::CreateServiceBloc" o-- "firebase_storage::firebase_storage.dart::FirebaseStorage"
+"kiosk::bloc::createService_bloc.dart::CreateServiceBloc" o-- "firebase_storage::firebase_storage.dart::Reference"
+"kiosk::bloc::createService_bloc.dart::CreateServiceBloc" o-- "firebase_storage::firebase_storage.dart::UploadTask"
+"kiosk::bloc::createService_bloc.dart::CreateServiceBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::checkInWalkinMember_bloc.dart::CheckInWalkinMemberBloc" {
+  +StreamController<dynamic> checkInWalkinMember
+  +StreamController<dynamic> isChecking
+  +Stream<dynamic> checkInWalkinMemberStream
+  +Stream<dynamic> isCheckingStream
+  +dynamic checkInWalkinMemberBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::checkInWalkinMember_bloc.dart::CheckInWalkinMemberBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::checkInWalkinMember_bloc.dart::CheckInWalkinMemberBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::removeServices_bloc.dart::RemoveServicesBloc" {
+  +StreamController<dynamic> removeServices
+  +Stream<dynamic> removeServicesStream
+  +dynamic removeServicesBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::removeServices_bloc.dart::RemoveServicesBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::removeServices_bloc.dart::RemoveServicesBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::findTransactionDetail_bloc.dart::FindTransactionDetailBloc" {
+  +StreamController<dynamic> findTransactionDetail
+  +Stream<dynamic> findTransactionDetailStream
+  +dynamic findTransactionDetailBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::findTransactionDetail_bloc.dart::FindTransactionDetailBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::findTransactionDetail_bloc.dart::FindTransactionDetailBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::addServices_bloc.dart::AddServicesBloc" {
+  +StreamController<dynamic> addServices
+  +Stream<dynamic> addServicesStream
+  +dynamic addServicesBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::addServices_bloc.dart::AddServicesBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::addServices_bloc.dart::AddServicesBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getGenCode_bloc.dart::GetGenCodeBloc" {
+  +StreamController<dynamic> genCodeStream
+  +Stream<dynamic> genCode
+  +dynamic getGenCodeBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::getGenCode_bloc.dart::GetGenCodeBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getGenCode_bloc.dart::GetGenCodeBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::updateService_bloc.dart::UpdateServiceBloc" {
+  +StreamController<dynamic> updateServiceStream
+  +StreamController<dynamic> isCheckingStream
+  +FirebaseStorage storage
+  +Reference storageReference
+  +UploadTask uploadTask
+  +Stream<dynamic> updateServicePrice
+  +Stream<dynamic> isChecking
+  +dynamic updateServiceBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::updateService_bloc.dart::UpdateServiceBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::updateService_bloc.dart::UpdateServiceBloc" o-- "firebase_storage::firebase_storage.dart::FirebaseStorage"
+"kiosk::bloc::updateService_bloc.dart::UpdateServiceBloc" o-- "firebase_storage::firebase_storage.dart::Reference"
+"kiosk::bloc::updateService_bloc.dart::UpdateServiceBloc" o-- "firebase_storage::firebase_storage.dart::UploadTask"
+"kiosk::bloc::updateService_bloc.dart::UpdateServiceBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getOnlineSlotList_bloc.dart::GetOnlineSlotListBloc" {
+  +StreamController<dynamic> getOnlineSlotListStream
+  +Stream<dynamic> getOnlineSlotList
+  +dynamic getOnlineSlotListBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::getOnlineSlotList_bloc.dart::GetOnlineSlotListBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getOnlineSlotList_bloc.dart::GetOnlineSlotListBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::cancelTransaction_bloc.dart::CancelTransactionBloc" {
+  +StreamController<dynamic> cancelTransaction
+  +StreamController<dynamic> isChecking
+  +Stream<dynamic> isCheckingStream
+  +Stream<dynamic> cancelTransactionStream
+  +dynamic cancelTransactionBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::cancelTransaction_bloc.dart::CancelTransactionBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::cancelTransaction_bloc.dart::CancelTransactionBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getAttendance_bloc.dart::GetAttendanceBloc" {
+  +StreamController<dynamic> getAttendanceStream
+  +Stream<dynamic> getAttendance
+  +dynamic getAttendanceBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::getAttendance_bloc.dart::GetAttendanceBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getAttendance_bloc.dart::GetAttendanceBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::checkBookedCustomer_bloc.dart::CheckBookedCustomerBloc" {
+  +StreamController<dynamic> checkBookedCustomerStream
+  +StreamController<dynamic> isLoggingStream
+  +Stream<dynamic> isLogging
+  +Stream<dynamic> checkMember
+  +dynamic checkBookedMember()
+  +void dispose()
+}
+
+"kiosk::bloc::checkBookedCustomer_bloc.dart::CheckBookedCustomerBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::checkBookedCustomer_bloc.dart::CheckBookedCustomerBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::updateStoreConfigure_bloc.dart::UpdateStoreConfigureBloc" {
+  +StreamController<dynamic> updateStoreConfigStream
+  +StreamController<dynamic> isCheckingStream
+  +FirebaseStorage storage
+  +Reference storageReference
+  +UploadTask uploadTask
+  +Stream<dynamic> updateStoreConfig
+  +Stream<dynamic> isChecking
+  +dynamic updateStoreConfigureBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::updateStoreConfigure_bloc.dart::UpdateStoreConfigureBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::updateStoreConfigure_bloc.dart::UpdateStoreConfigureBloc" o-- "firebase_storage::firebase_storage.dart::FirebaseStorage"
+"kiosk::bloc::updateStoreConfigure_bloc.dart::UpdateStoreConfigureBloc" o-- "firebase_storage::firebase_storage.dart::Reference"
+"kiosk::bloc::updateStoreConfigure_bloc.dart::UpdateStoreConfigureBloc" o-- "firebase_storage::firebase_storage.dart::UploadTask"
+"kiosk::bloc::updateStoreConfigure_bloc.dart::UpdateStoreConfigureBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getAllServices_bloc.dart::GetAllServicesBloc" {
+  +StreamController<dynamic> getAllServicesStream
+  +StreamController<dynamic> getVehicleTypeStream
+  +StreamController<dynamic> getRemainServicesStream
+  +List<String> list
+  +List<Service> serviceList
+  +Stream<dynamic> getAllServices
+  +Stream<dynamic> getRemainServices
+  +Stream<dynamic> getVehicleType
+  +dynamic getAllServicesBloc()
+  +dynamic getRemainServicesBloc()
+  +void searchByName()
+  +void dispose()
+}
+
+"kiosk::bloc::getAllServices_bloc.dart::GetAllServicesBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getAllServices_bloc.dart::GetAllServicesBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::checkAdmin_bloc.dart::CheckAdminBloc" {
+  +StreamController<dynamic> checkAdminStream
+  +Stream<dynamic> checkAdmin
+  +dynamic checkAdminBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::checkAdmin_bloc.dart::CheckAdminBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::checkAdmin_bloc.dart::CheckAdminBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::updatePriceService_bloc.dart::UpdateServicesPriceBloc" {
+  +StreamController<dynamic> updateServicePriceStream
+  +StreamController<dynamic> isCheckingStream
+  +Stream<dynamic> updateServicePrice
+  +Stream<dynamic> isChecking
+  +dynamic updateServicePriceBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::updatePriceService_bloc.dart::UpdateServicesPriceBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::updatePriceService_bloc.dart::UpdateServicesPriceBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getDefaultOnlineHour_bloc.dart::GetDefaultOnlineHourBloc" {
+  +StreamController<dynamic> getDefaultOnlineHourStream
+  +Stream<dynamic> getDefaultOnlineHour
+  +dynamic getDefaultConfigureBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::getDefaultOnlineHour_bloc.dart::GetDefaultOnlineHourBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getDefaultOnlineHour_bloc.dart::GetDefaultOnlineHourBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getRandomEmp_bloc.dart::GetRandomEmpBloc" {
+  +StreamController<dynamic> getRandomEmpStream
+  +Stream<dynamic> genRandomEmp
+  +dynamic getRandomEmpBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::getRandomEmp_bloc.dart::GetRandomEmpBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getRandomEmp_bloc.dart::GetRandomEmpBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getVehicleType_bloc.dart::GetServicesOfVehicleTypeBloc" {
+  +StreamController<dynamic> getServicesOfVehicleTypeStream
+  +StreamController<dynamic> vehicleTypeStream
+  +StreamController<dynamic> vehicleBrandStream
+  +Stream<dynamic> vehicleType
+  +Stream<dynamic> vehicleBrand
+  +Stream<dynamic> getServicesOfVehicleType
+  +dynamic getVehicleTypeBloc()
+  +dynamic getVehicleBrandBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::getVehicleType_bloc.dart::GetServicesOfVehicleTypeBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getVehicleType_bloc.dart::GetServicesOfVehicleTypeBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::assignPrice_bloc.dart::AssignPriceBloc" {
+  +StreamController<dynamic> assignPriceStream
+  +Stream<dynamic> assignPrice
+  +dynamic assignPriceBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::assignPrice_bloc.dart::AssignPriceBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::assignPrice_bloc.dart::AssignPriceBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::finishTransaction_bloc.dart::FinishTransactionBloc" {
+  +StreamController<dynamic> finishTransaction
+  +StreamController<dynamic> isChecking
+  +Stream<dynamic> isCheckingStream
+  +Stream<dynamic> finishTransactionStream
+  +dynamic finishTransactionBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::finishTransaction_bloc.dart::FinishTransactionBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::finishTransaction_bloc.dart::FinishTransactionBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::createWalkinMember_bloc.dart::CreateWalkinMemberBloc" {
+  +StreamController<dynamic> createInWalkinMember
+  +StreamController<dynamic> isChecking
+  +Stream<dynamic> createWalkinMemberStream
+  +Stream<dynamic> isCheckingStream
+  +dynamic createWalkinMemberBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::createWalkinMember_bloc.dart::CreateWalkinMemberBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::createWalkinMember_bloc.dart::CreateWalkinMemberBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getVehicleTypeChip_bloc.dart::GetServicesOfVehicleTypeChipBloc" {
+  +StreamController<dynamic> vehicleTypeStream
+  +Stream<dynamic> vehicleType
+  +dynamic getVehicleTypeChipBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::getVehicleTypeChip_bloc.dart::GetServicesOfVehicleTypeChipBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getVehicleTypeChip_bloc.dart::GetServicesOfVehicleTypeChipBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getAllTransactions_bloc.dart::GetAllTransactionBloc" {
+  +StreamController<dynamic> getTranasctionStream
+  +List<Transaction> transaction
+  +Stream<dynamic> getTransaction
+  +dynamic getAllTransactionBloc()
+  +void dispose()
+  +void searchByName()
+}
+
+"kiosk::bloc::getAllTransactions_bloc.dart::GetAllTransactionBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getAllTransactions_bloc.dart::GetAllTransactionBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::getWaitingList_bloc.dart::GetWaitingListBloc" {
+  +StreamController<dynamic> getWaitingList
+  +List<WaitingSlot> list
+  +Stream<dynamic> getWaitingListStream
+  +dynamic getWaitingListBloc()
+  +void searchByPhone()
+  +void dispose()
+}
+
+"kiosk::bloc::getWaitingList_bloc.dart::GetWaitingListBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::getWaitingList_bloc.dart::GetWaitingListBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::updateDefaultOnlineHour_bloc.dart::UpdateDefaultOnlineHourBloc" {
+  +StreamController<dynamic> updateDefaultOnlineHourStream
+  +Stream<dynamic> updateDefaultOnlineHour
+  +dynamic updateDefaultOnlineHourBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::updateDefaultOnlineHour_bloc.dart::UpdateDefaultOnlineHourBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::updateDefaultOnlineHour_bloc.dart::UpdateDefaultOnlineHourBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::findTransaction_bloc.dart::FindTransactionBloc" {
+  +StreamController<dynamic> findTransaction
+  +Stream<dynamic> findTransactionStream
+  +dynamic findTransactionBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::findTransaction_bloc.dart::FindTransactionBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::findTransaction_bloc.dart::FindTransactionBloc" o-- "dart::async::Stream<dynamic>"
+
+class "kiosk::bloc::checkPlate_bloc.dart::CheckPlateBloc" {
+  +StreamController<dynamic> checkPlateStream
+  +Stream<dynamic> checkPlate
+  +dynamic checkPlateBloc()
+  +void dispose()
+}
+
+"kiosk::bloc::checkPlate_bloc.dart::CheckPlateBloc" o-- "dart::async::StreamController<dynamic>"
+"kiosk::bloc::checkPlate_bloc.dart::CheckPlateBloc" o-- "dart::async::Stream<dynamic>"
+
+
+@enduml
