@@ -121,7 +121,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                         padding: EdgeInsets.only(top: 50, left: 50),
                         width: width / 2,
                         child: Text(
-                          'Thông tin ',
+                          'Information ',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 30,
@@ -134,7 +134,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                         child: Container(
                           width: width / 2,
                           child: Text(
-                            'Họ và tên',
+                            'Fullname',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
@@ -182,7 +182,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                                     child: Container(
                                       width: width / 6,
                                       child: Text(
-                                        'Số điện thoại',
+                                        'Phone number',
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 20,
@@ -226,7 +226,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                                     child: Container(
                                       width: width / 7,
                                       child: Text(
-                                        'Biển số xe',
+                                        'Plate',
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 20,
@@ -281,7 +281,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                                     child: Container(
                                       width: width / 6,
                                       child: Text(
-                                        'Loại xe',
+                                        'Type',
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 20,
@@ -325,7 +325,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                                     child: Container(
                                       width: width / 7,
                                       child: Text(
-                                        'Hãng xe',
+                                        'Brand',
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 20,
@@ -403,7 +403,7 @@ class _ManageTransactions extends State<ManageTransactions> {
           child: Container(
             width: width / 7,
             child: Text(
-              'HUỶ ĐƠN',
+              'TERMINATE',
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
@@ -432,7 +432,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                 temp = snapshot.data as List<Payment>;
                 List<Payment> list = [];
                 for (var data in temp) {
-                  if (data.paymentType != "Chưa Thanh Toán") {
+                  if (data.paymentType != "Unpaid") {
                     list.add(data);
                   }
                 }
@@ -446,7 +446,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                         child: Container(
                           width: width / 5,
                           child: Text(
-                            'Phương thức thanh toán',
+                            'Payment Method',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
@@ -503,8 +503,8 @@ class _ManageTransactions extends State<ManageTransactions> {
                 temp = snapshot.data as List<Payment>;
                 List<Payment> list = [];
                 for (var data in temp) {
-                  if (data.paymentType != "Chưa Thanh Toán" &&
-                      data.paymentType != "E-wallet") {
+                  if (data.paymentType != "Unpaid" &&
+                      data.paymentType != "ETFPOS") {
                     list.add(data);
                   }
                 }
@@ -521,7 +521,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                         child: Container(
                           width: width / 5,
                           child: Text(
-                            'Phương thức thanh toán',
+                            'Payment Method',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
@@ -609,7 +609,7 @@ class _ManageTransactions extends State<ManageTransactions> {
           child: Container(
             width: width / 10,
             child: Text(
-              'HOÀN THÀNH',
+              'FINISH',
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
@@ -676,15 +676,15 @@ class _ManageTransactions extends State<ManageTransactions> {
       PasswordDialog.displayDialog(context, widget.transaction.id, payId,
           payment, widget.transaction.cust!.deviceToken);
     } else {
-      OpenDialog.displayDialog("Error", context,
-          "Vui lòng chọn phương thức thanh toán đơn hàng", AlertType.error);
+      OpenDialog.displayDialog(
+          "Error", context, "Please choose a payment method", AlertType.error);
     }
   }
 
   void onFinishWithoutPaymentClicked(BuildContext context) {
     FocusScope.of(context).unfocus();
     var pay = temp
-        .where((element) => element.paymentType!.contains("Chưa Thanh Toán"))
+        .where((element) => element.paymentType!.contains("Unpaid"))
         .toList();
     var payId = pay[0].id;
     PasswordDialog.displayDialog(context, widget.transaction.id, payId,
@@ -722,7 +722,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                           padding: const EdgeInsets.only(
                               top: 10, bottom: 10, left: 30.0),
                           child: Text(
-                            "Người Hủy : ",
+                            "Actor : ",
                             style: TextStyle(fontSize: 20.0),
                           ),
                         ),
@@ -738,7 +738,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                               },
                             ),
                             Text(
-                              'Khách hàng',
+                              'Customer',
                               style: TextStyle(fontSize: 20),
                             ),
                           ],
@@ -753,7 +753,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                       padding: const EdgeInsets.only(
                           top: 10, bottom: 10, left: 30.0),
                       child: Text(
-                        "Lí do Hủy ",
+                        "Reasons ",
                         style: TextStyle(fontSize: 20.0),
                       ),
                     ),
@@ -769,7 +769,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                           controller: reasonController,
                           style: TextStyle(fontSize: 25),
                           decoration: InputDecoration(
-                            hintText: "Lí do hủy đơn",
+                            hintText: "Reasons to terminate",
                             border: InputBorder.none,
                           ),
                           maxLines: 8,
@@ -789,7 +789,7 @@ class _ManageTransactions extends State<ManageTransactions> {
                               bottomRight: Radius.circular(32.0)),
                         ),
                         child: Text(
-                          "HỦY ĐƠN",
+                          "TERMINATE",
                           style: TextStyle(color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
@@ -885,13 +885,13 @@ class _LeftWidgetState extends State<LeftWidget> {
       i = i + num.tryParse(data.price!)!.toInt();
     }
     widget.services
-        .sort((a, b) => b.name != "Phụ Thu" && !(b.isNew ?? false) ? 1 : -1);
+        .sort((a, b) => b.name != "Other" && !(b.isNew ?? false) ? 1 : -1);
   }
 
   @override
   Widget build(BuildContext context) {
     for (var data in widget.services) {
-      if (data.name != "Phụ Thu") {
+      if (data.name != "Other") {
         length++;
       }
     }
@@ -908,7 +908,7 @@ class _LeftWidgetState extends State<LeftWidget> {
             padding: EdgeInsets.only(top: 50, left: 50),
             width: widget.width / 2,
             child: Text(
-              'Dịch vụ đã chọn',
+              'Selected Services',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -922,8 +922,8 @@ class _LeftWidgetState extends State<LeftWidget> {
               icon: Icon(Icons.add),
               onPressed: () {
                 if (length == 5) {
-                  OpenDialog.displayDialog("Error", context,
-                      "Chỉ được sử dụng tối 5 dich vụ", AlertType.error);
+                  OpenDialog.displayDialog(
+                      "Error", context, "Maximum 5 services", AlertType.error);
                 } else {
                   Navigator.of(context)
                       .push(
@@ -976,13 +976,13 @@ class _LeftWidgetState extends State<LeftWidget> {
               padding: const EdgeInsets.only(top: 30),
               child: Row(
                 children: [
-                  Text("Tổng cộng",
+                  Text("Total",
                       style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
                           color: Colors.white)),
                   Spacer(),
-                  Text("\$" + MoneyFormat.formatMoney(i.toString()),
+                  Text(MoneyFormat.formatMoney(i.toString()),
                       style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
@@ -1030,7 +1030,7 @@ class _LeftWidgetState extends State<LeftWidget> {
   ) async {
     if (widget.services.length == 1) {
       OpenDialog.displayDialog("Error", context,
-          "Mỗi đơn hàng phải tồn tại ít nhất 1 dịch vụ", AlertType.error);
+          "A transaction must have at least 1 service", AlertType.error);
     } else {
       this.showDialogConfirmActive();
       bool check = await bloc.removeServicesBloc(
@@ -1100,7 +1100,7 @@ class PasswordDialog {
         context: context,
         image: Image.asset("assets/icons/icon.png"),
         style: alertStyle,
-        title: "Nhập mật khẩu",
+        title: "Input password",
         content: Column(
           children: <Widget>[
             Form(
@@ -1122,7 +1122,7 @@ class PasswordDialog {
               showDialogConfirmActive(context);
               if (passwordController.text.trim().isEmpty) {
                 OpenDialog.displayDialog(
-                    "Error", context, "Mật khẩu không hợp lệ", AlertType.error);
+                    "Error", context, "Password incorrect", AlertType.error);
               } else {
                 CheckAdminBloc checkBloc = CheckAdminBloc();
                 String password = passwordController.text;
@@ -1133,13 +1133,13 @@ class PasswordDialog {
                   } else {
                     Navigator.of(context).pop();
                     OpenDialog.displayDialog("Error", context,
-                        "Mật khẩu không đúng ", AlertType.error);
+                        "Password incorrect", AlertType.error);
                   }
                 });
               }
             },
             child: Text(
-              "Đăng Nhập",
+              "Login",
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           )

@@ -4,7 +4,6 @@ import 'package:kiosk/dataprovider/finishTransaction.dart';
 import 'package:kiosk/noti/noti.dart';
 import 'package:kiosk/ui/widgets/dialog.dart';
 import 'package:kiosk/ui/widgets/dialogCount.dart';
-import 'package:kiosk/ui/widgets/dialogToHome.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class FinishTransactionBloc {
@@ -29,30 +28,30 @@ class FinishTransactionBloc {
     Navigator.of(context).pop();
     if (result == "OK") {
       noti.updateNoti();
-      if (payment == "E-wallet" || payment == "Tiền mặt") {
+      if (payment == "ETFPOS" || payment == "Cash") {
         isChecking.sink.add("Done");
         noti.sendNotiToUser("Bạn vừa hoàn thành 1 đơn hàng", deviceToken);
         CountDialog.displayDialog("Success", context,
-            "Hoàn tất giao dịch thành công", AlertType.success,3);
+            "Finish transaction success", AlertType.success, 3);
         return true;
       } else {
         isChecking.sink.add("Done");
         CountDialog.displayDialog("Success", context,
-            "Thêm vào blacklist thành công", AlertType.success,3);
+            "Add to blacklist success", AlertType.success, 3);
         return true;
       }
     } else if (result == "Not enough money") {
       OpenDialog.displayDialog("Error", context,
           "Số dư tài khoản trong ví KH không đủ", AlertType.error);
     } else {
-      if (payment == "E-wallet" || payment == "Tiền mặt") {
+      if (payment == "ETFPOS" || payment == "Cash") {
         isChecking.sink.add("Done");
         OpenDialog.displayDialog(
-            "Error", context, "Hoàn tất giao dịch thất bại", AlertType.error);
+            "Error", context, "Finish transaction fail", AlertType.error);
       } else {
         isChecking.sink.add("Done");
         OpenDialog.displayDialog(
-            "Error", context, "Thêm vào blacklist thất bại", AlertType.error);
+            "Error", context, "Add to blacklist fail", AlertType.error);
       }
     }
 

@@ -48,7 +48,7 @@ class TransactionColumn extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  width: width * 0.21,
+                  width: width * 0.28,
                   child: Text(
                     title.toUpperCase(),
                     style: TextStyle(

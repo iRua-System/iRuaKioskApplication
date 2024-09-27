@@ -53,7 +53,7 @@ class ServiceColumn extends StatelessWidget {
               Container(
                 width: 150,
                 child: Text(
-                  "\$" + MoneyFormat.formatMoney(price.split(".")[0]),
+                  MoneyFormat.formatMoney(price.split(".")[0]),
                   //textAlign: TextAlign.right,
                   style: TextStyle(
                       fontSize: 23.0,

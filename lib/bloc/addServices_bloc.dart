@@ -16,18 +16,20 @@ class AddServicesBloc {
     var result = await addServiceProvider
         .addService(transId, servicesVehicle, isNew)
         .catchError((error) {
-      OpenDialog.displayDialog("Error", context, "Kiểm tra lại kết nối mạng",AlertType.error);
+      OpenDialog.displayDialog(
+          "Error", context, "Kiểm tra lại kết nối mạng", AlertType.error);
     });
     if (result) {
       print(result);
-      CountDialog.displayDialog("Success", context, "Thêm dịch vụ thành công",AlertType.success,2);
+      CountDialog.displayDialog(
+          "Success", context, "Add services success", AlertType.success, 2);
       // Navigator.of(context).popUntil((route) => count++ >= 2);
-     
+
       return true;
     } else {
       print("failed");
       OpenDialog.displayDialog(
-          "Error", context, "Thêm dịch vụ không thành công",AlertType.error);
+          "Error", context, "Add services unsuccess", AlertType.error);
       return false;
     }
   }

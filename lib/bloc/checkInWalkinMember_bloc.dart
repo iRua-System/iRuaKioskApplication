@@ -21,7 +21,10 @@ class CheckInWalkinMemberBloc {
       vehicleBrand,
       phonenum,
       context,
-      List<String> servicesVehicle, String deviceToken, String totalPrice, String time) async {
+      List<String> servicesVehicle,
+      String deviceToken,
+      String totalPrice,
+      String time) async {
     isChecking.sink.add("Checking");
     print("Bloc Check");
     var checkProvider = CheckInWalkinMeberProvider();
@@ -30,9 +33,9 @@ class CheckInWalkinMemberBloc {
     print(time);
     var date = DateFormat("HH:mm").parse(time);
     date = date.add(Duration(minutes: 10));
-    var min =date.minute.toString();
+    var min = date.minute.toString();
 
-    if(date.minute.toString().length == 1 ){
+    if (date.minute.toString().length == 1) {
       min = "0" + date.minute.toString();
     }
     print(date);
@@ -46,16 +49,18 @@ class CheckInWalkinMemberBloc {
     print("ket qua " + result.toString());
     Navigator.of(context).pop();
     if (result != null) {
-     
       noti.updateNoti();
-      noti.sendNotiToUser("Bạn vừa Check in thành công 1 đơn hàng ", deviceToken);
+      noti.sendNotiToUser(
+          "Bạn vừa Check in thành công 1 đơn hàng ", deviceToken);
       ToHomeDialog.displayDialog(
           "Success",
           context,
-          "Số thứ tự của khách hàng là " +
+          "Order is number " +
               result.split(".")[0].toString() +
-              "\n Thời gian dự kiến là " +
-              date.hour.toString() +":" + min,
+              "\n Estimated time to take the order is " +
+              date.hour.toString() +
+              ":" +
+              min,
           AlertType.success);
       isChecking.sink.add("Done");
       // Future.delayed(const Duration(seconds: 5), () {
@@ -65,7 +70,7 @@ class CheckInWalkinMemberBloc {
     } else {
       print("failed");
       OpenDialog.displayDialog(
-          "Error", context, "Check in không thành công", AlertType.error);
+          "Error", context, "Check in unsuccess", AlertType.error);
       print("alo");
       isChecking.sink.add("Done");
       return false;

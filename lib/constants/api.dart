@@ -1,5 +1,6 @@
 class ApiConstants {
-  static const HOST = "https://localhost:5001/api/v1";
+  static const HOST =
+      "https://irua-app-service-drb7dxajb9fzdjg2.eastus-01.azurewebsites.net/api/v1";
 }
 
 class RegexConstants {

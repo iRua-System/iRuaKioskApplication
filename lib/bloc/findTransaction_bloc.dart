@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:kiosk/dataprovider/findTransaction.dart';
+import 'package:kiosk/models/transaction.dart';
 import 'package:kiosk/ui/widgets/dialog.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -8,7 +9,7 @@ class FindTransactionBloc {
   Stream get findTransactionStream => findTransaction.stream;
 
   Future<bool> findTransactionBloc(context, String phoneNum) async {
-    findTransaction.sink.add("Logging");
+    findTransaction.sink.add(null);
     print("Bloc Check");
     var findProvider = FindTransactionProvider();
     var result =
@@ -17,11 +18,11 @@ class FindTransactionBloc {
           "Error", context, "Kiểm tra lại kết nối mạng", AlertType.error);
     });
 
-    if (result.length > 0 ) {
+    if (result.length > 0) {
       findTransaction.sink.add(result);
       return true;
     } else {
-      findTransaction.sink.add("Aloha");
+      findTransaction.sink.add(null);
       return false;
     }
   }

@@ -86,10 +86,10 @@ class _FindTransactionScreen extends State<FindTransactionScreen> {
                       child: Container(
                         width: width / 10,
                         child: Text(
-                          'Từ khoá',
+                          'Keyword',
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 28,
+                              fontSize: 23,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -151,9 +151,9 @@ class _FindTransactionScreen extends State<FindTransactionScreen> {
                     Padding(
                       padding: EdgeInsets.only(left: 30, right: 30),
                       child: TransactionHeaderColumn(
-                        title: 'MÃ ĐƠN',
-                        price: 'SỐ TIỀN VND',
-                        status: 'TRẠNG THÁI',
+                        title: 'Transaction ID',
+                        price: 'Total',
+                        status: 'Status',
                         width: width,
                       ),
                     ),
@@ -173,22 +173,22 @@ class _FindTransactionScreen extends State<FindTransactionScreen> {
                               if (snapshot.hasData) {
                                 var snapshotData =
                                     snapshot.data as List<Transaction>;
-                                if (snapshot.data == 'Aloha') {
+                                if (snapshotData.length == 0) {
                                   return Center(
                                     child: Text(
-                                      'Không có giao dịch hôm nay với từ khoá này',
+                                      'Not found any transaction with that keyword',
                                       style: TextStyle(
                                           color: Colors.black, fontSize: 25),
                                     ),
                                   );
-                                } else if (snapshot.data == 'Logging') {
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 7,
-                                      backgroundColor:
-                                          AppColor.PRIMARY_TEXT_WHITE,
-                                    ),
-                                  );
+                                  // } else if (snapshot.data == 'Logging') {
+                                  //   return Center(
+                                  //     child: CircularProgressIndicator(
+                                  //       strokeWidth: 7,
+                                  //       backgroundColor:
+                                  //           AppColor.PRIMARY_TEXT_WHITE,
+                                  //     ),
+                                  //   );
                                 } else {
                                   return Container(
                                     child: Column(children: <Widget>[
@@ -212,7 +212,7 @@ class _FindTransactionScreen extends State<FindTransactionScreen> {
                                           child: TransactionColumn(
                                             width: width,
                                             title: data.id!.split("-")[0],
-                                            price: data.price!,
+                                            price: data.price ?? '0',
                                             status: data.status!,
                                           ),
                                         ),
