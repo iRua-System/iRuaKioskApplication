@@ -1,4 +1,4 @@
-# kiosk_final
+# irua_kiosk_application
 
 A new Flutter project.
 
